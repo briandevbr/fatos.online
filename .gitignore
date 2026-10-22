@@ -1,0 +1,9 @@
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependências e variáveis de ambiente (a aplicação tem regras próprias em app/.gitignore)
+node_modules/
+.env
