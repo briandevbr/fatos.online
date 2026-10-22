@@ -149,7 +149,7 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright & disclaimer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
           <p>
-            © {currentYear} Fatos.online. Todos os direitos reservados. Feito com rigor investigativo e tecnologia.
+            © {currentYear} Equipe acadêmica Fatos.online · Código sob licença Apache-2.0. Feito com rigor investigativo e tecnologia.
           </p>
 
           <div className="flex items-center gap-4">
