@@ -563,7 +563,7 @@ Execute a auditoria seguindo rigorosamente as 8 regras, os 5 passos do processo 
   }
 
   // 3. AUDITORIA FACTUAL ESTRUTURADA BASEADA NAS EVIDÊNCIAS COLETADAS
-  const evaluated = evaluateArticlesEvidence(safeContent, allFoundArticles, subQueries);
+  const evaluated = evaluateArticlesEvidence(safeContent, articlesBySubQuery, allFoundArticles);
 
   const fallbackItem: FactCheckItem = {
     id: `chk_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
