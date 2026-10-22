@@ -1,5 +1,7 @@
 # 🛡️ Fatos.online — Portal Moderno de Checagem de Fatos & Verdade Digital
 
+> Esta é a aplicação full-stack do projeto (pasta `app/` do repositório). A landing page estática fica na raiz — veja o [README principal](../README.md).
+
 Portal completo e responsivo de jornalismo investigativo e checagem de fatos em tempo real, equipado com inteligência artificial multimodal (Google Gemini 2.5/3.8 Flash com busca ativa Google Search Grounding), catálogo de desmentidos com filtros, envio de denúncias multimídia e newsletter semanal em conformidade com a LGPD.
 
 ---
@@ -53,8 +55,8 @@ Portal completo e responsivo de jornalismo investigativo e checagem de fatos em 
 
 ### 1. Clonar o repositório e instalar dependências
 ```bash
-git clone <url-do-repositorio>
-cd fatos-online
+git clone https://github.com/briandevbr/fatos.online.git
+cd fatos.online/app
 npm install
 ```
 
