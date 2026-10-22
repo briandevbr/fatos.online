@@ -46,7 +46,7 @@ Landing page for **Fatos.online — Checagem & Verdade Digital** (Fact-Checking 
 | `assets/favicon.svg` | Shield icon with a verification badge, same as the brand mark |
 | `docs/preview-desktop.jpg` | Real screenshot of the page at 1440×900, also used as the Open Graph image |
 | `docs/preview-mobile.jpg` | Real screenshot of the page at 390×844 |
-| `humans.txt` | Authorship and technical collaboration credits |
+| `humans.txt` | Authorship credits |
 | `README.md` | This documentation in Portuguese |
 
 ---

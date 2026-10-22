@@ -3,10 +3,6 @@
   GitHub: https://github.com/briandevbr
   Local: Pernambuco, Brasil
 
-/* COLABORAÇÃO */
-  Colaboração técnica (desenvolvimento assistido por IA): Claude Code — Anthropic
-  Site: https://claude.com/claude-code
-
 /* SITE */
   Projeto: Fatos.online — Checagem & Verdade Digital
   Repositório: https://github.com/briandevbr/fatos.online

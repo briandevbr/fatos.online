@@ -4,7 +4,6 @@
  * análise de sinais (Checar Fato), cópia de referências e QR Code de acesso rápido.
  *
  * Autor: David Brian — https://github.com/briandevbr
- * Colaboração técnica: Claude Code (Anthropic)
  */
 (() => {
   'use strict';

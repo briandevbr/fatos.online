@@ -4,7 +4,6 @@
  * Modo byte (UTF-8) · correção L/M/Q/H · versões 1–40 · escolha automática de máscara.
  *
  * Autor: David Brian — https://github.com/briandevbr
- * Colaboração técnica: Claude Code (Anthropic)
  */
 (function (root) {
   'use strict';
