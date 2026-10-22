@@ -46,7 +46,7 @@ Landing page da iniciativa **Fatos.online — Checagem & Verdade Digital**, que 
 | `assets/favicon.svg` | Ícone do escudo com selo de verificação, o mesmo da marca |
 | `docs/preview-desktop.jpg` | Captura real da página em 1440×900, usada também como imagem do Open Graph |
 | `docs/preview-mobile.jpg` | Captura real da página em 390×844 |
-| `humans.txt` | Créditos de autoria e de colaboração técnica |
+| `humans.txt` | Créditos de autoria |
 | `README.en.md` | Esta documentação em inglês |
 
 ---

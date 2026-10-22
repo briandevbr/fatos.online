@@ -3,8 +3,6 @@
   GitHub: https://github.com/briandevbr
   Local: Pernambuco, Brasil
 
-/* COLABORAÇÃO */
-
 /* SITE */
   Projeto: Fatos.online — Checagem & Verdade Digital
   Repositório: https://github.com/briandevbr/fatos.online
