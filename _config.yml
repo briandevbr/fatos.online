@@ -1,0 +1,4 @@
+# GitHub Pages publica só a landing page estática da raiz.
+# A aplicação full-stack (app/) roda em Node.js e não é servida como site estático.
+exclude:
+  - app
