@@ -3,7 +3,8 @@
  * Interações da landing page: tema, menu, destaque da seção ativa, Central de Monitoramento,
  * análise de sinais (Checar Fato), cópia de referências e QR Code de acesso rápido.
  *
- * Autor: David Brian — https://github.com/briandevbr
+ * Autoria: equipe acadêmica Fatos.online — https://github.com/briandevbr/fatos.online
+ * Licença: Apache-2.0
  */
 (() => {
   'use strict';

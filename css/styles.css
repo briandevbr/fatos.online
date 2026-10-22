@@ -3,7 +3,8 @@
  * Identidade visual: tema escuro em azul noturno, vidro fosco (glassmorphism),
  * títulos serifados e destaques em ciano/azul. Layout fluido para celular, tablet e desktop.
  *
- * Autor: David Brian — https://github.com/briandevbr
+ * Autoria: equipe acadêmica Fatos.online — https://github.com/briandevbr/fatos.online
+ * Licença: Apache-2.0
  */
 
 /* =========================================================
@@ -1273,6 +1274,28 @@ textarea.field {
   gap: 10px;
 }
 
+.checker-app-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px dashed var(--border-strong);
+  background: var(--primary-soft);
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.checker-app-note .icon {
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+.checker-app-note a {
+  font-weight: 700;
+}
+
 .checker-result {
   margin-top: 28px;
   padding-top: 28px;
@@ -2408,6 +2431,62 @@ textarea.field {
 
 .footer-col a:hover {
   color: var(--text-strong);
+}
+
+.footer-team {
+  padding-bottom: 36px;
+}
+
+.footer-team h2 {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-team p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  list-style: none;
+}
+
+.team-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 5px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(148, 163, 184, 0.06);
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.team-list a:hover {
+  color: var(--text-strong);
+  border-color: var(--border-strong);
+  background: var(--primary-soft);
+}
+
+.team-list img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #2563eb, #6366f1);
 }
 
 .footer-bottom {
