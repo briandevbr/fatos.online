@@ -3,7 +3,8 @@
  * Gerador de QR Code nativo (ISO/IEC 18004), sem dependências externas.
  * Modo byte (UTF-8) · correção L/M/Q/H · versões 1–40 · escolha automática de máscara.
  *
- * Autor: David Brian — https://github.com/briandevbr
+ * Autoria: equipe acadêmica Fatos.online — https://github.com/briandevbr/fatos.online
+ * Licença: Apache-2.0
  */
 (function (root) {
   'use strict';

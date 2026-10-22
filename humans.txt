@@ -1,11 +1,21 @@
 /* EQUIPE */
-  Autor e idealizador: David Brian
-  GitHub: https://github.com/briandevbr
-  Local: Pernambuco, Brasil
+  Projeto acadêmico desenvolvido em grupo (ordem alfabética por usuário do GitHub):
+  Andersmatias9278-hub — https://github.com/Andersmatias9278-hub
+  David Brian (briandevbr) — https://github.com/briandevbr
+  Davi P. Carvalho (Davipcarvalh0) — https://github.com/Davipcarvalh0
+  GabrielleSophia — https://github.com/GabrielleSophia
+  JoaoCGjr — https://github.com/JoaoCGjr
+  larpras — https://github.com/larpras
+  Luciano (lucianohvn) — https://github.com/lucianohvn
+  lucasmacedo (luferc1) — https://github.com/luferc1
+  matheuseduardo-cpu — https://github.com/matheuseduardo-cpu
+  Victoriabueno22 — https://github.com/Victoriabueno22
 
 /* SITE */
   Projeto: Fatos.online — Checagem & Verdade Digital
   Repositório: https://github.com/briandevbr/fatos.online
+  Licença: Apache-2.0 (arquivo LICENSE)
+  Aplicação: app/ (React, Vite, Express e Gemini)
   Última atualização: 2026/10/22
   Idioma: Português (Brasil)
   Padrões: HTML5, CSS3, JavaScript (ES2020), sem frameworks nem build
