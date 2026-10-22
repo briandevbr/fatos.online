@@ -1,0 +1,11 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Base de assinantes da newsletter (dado pessoal / LGPD): recriada automaticamente pela aplicação
+.data/subscribers.json

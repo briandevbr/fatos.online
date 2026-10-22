@@ -1,0 +1,7 @@
+{
+  "name": "Fatos.online - Checagem de Fatos e Verdade Digital",
+  "description": "Portal completo de jornalismo investigativo e checagem de fatos em tempo real com inteligência artificial multimodal, busca em tempo real e verificação de redes sociais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
