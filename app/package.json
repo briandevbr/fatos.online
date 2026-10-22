@@ -1,7 +1,9 @@
 {
-  "name": "react-example",
+  "name": "fatos-online-app",
   "private": true,
   "version": "0.0.0",
+  "description": "Aplicação Fatos.online: checagem de fatos com IA (Gemini) e busca em tempo real",
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
@@ -28,7 +30,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.4.21",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.21.0",
     "typescript": "^7.0.2",
