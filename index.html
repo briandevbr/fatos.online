@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<!--
+  Fatos.online — Checagem & Verdade Digital
+  Landing page em HTML5, CSS3 e JavaScript nativo.
+
+  Autor: David Brian — https://github.com/briandevbr
+  Colaboração técnica: Claude Code (Anthropic)
+  Repositório: https://github.com/briandevbr/fatos.online
+-->
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fatos.online - Checagem de Fatos e Verdade Digital</title>
+  <meta name="description" content="Fatos.online combina apuração jornalística baseada nos princípios da IFCN, tecnologia de busca ativa e letramento midiático para combater a desinformação com fatos verificados.">
+  <meta name="keywords" content="checagem de fatos, fact-checking, desinformação, fake news, IFCN, letramento midiático, verificação de notícias, Brasil">
+
+  <!-- Autoria e créditos -->
+  <meta name="author" content="David Brian">
+  <meta name="creator" content="David Brian (github.com/briandevbr)">
+  <meta name="publisher" content="Fatos.online">
+  <meta name="copyright" content="© 2026 David Brian · Fatos.online">
+  <meta name="DC.title" content="Fatos.online — Checagem & Verdade Digital">
+  <meta name="DC.creator" content="David Brian">
+  <meta name="DC.contributor" content="Claude Code (Anthropic) — colaboração técnica">
+  <meta name="DC.language" content="pt-BR">
+  <meta name="DC.date" content="2026-10-22">
+  <link rel="author" href="humans.txt">
+
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://briandevbr.github.io/fatos.online/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph / redes sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Fatos.online">
+  <meta property="og:title" content="Fatos.online — Checagem & Verdade Digital">
+  <meta property="og:description" content="Combata a desinformação com fatos verificados: metodologia IFCN, casos práticos de checagem, referências acadêmicas e acesso rápido via QR Code.">
+  <meta property="og:url" content="https://briandevbr.github.io/fatos.online/">
+  <meta property="og:image" content="https://briandevbr.github.io/fatos.online/docs/preview-desktop.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1440">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:alt" content="Página inicial do Fatos.online com o título Combata a desinformação com fatos verificados e o painel Central de Monitoramento.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fatos.online — Checagem & Verdade Digital">
+  <meta name="twitter:description" content="Combata a desinformação com fatos verificados.">
+  <meta name="twitter:image" content="https://briandevbr.github.io/fatos.online/docs/preview-desktop.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Fatos.online",
+    "alternateName": "Fatos.online — Checagem & Verdade Digital",
+    "url": "https://briandevbr.github.io/fatos.online/",
+    "inLanguage": "pt-BR",
+    "description": "Iniciativa de checagem de fatos e letramento midiático contra a desinformação.",
+    "author": {
+      "@type": "Person",
+      "name": "David Brian",
+      "url": "https://github.com/briandevbr",
+      "address": { "@type": "PostalAddress", "addressRegion": "PE", "addressCountry": "BR" }
+    },
+    "codeRepository": "https://github.com/briandevbr/fatos.online"
+  }
+  </script>
+
+  <!-- Aplica o tema salvo antes da pintura para evitar "piscar" -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('fatos-theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      } catch (e) { /* armazenamento indisponível */ }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/qrcode.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Ícones: Lucide (https://lucide.dev) — ISC License. Copyright (c) Lucide Contributors 2022;
+       partes (c) Cole Bemis 2013-2022 (Feather, MIT). Texto completo em assets/licenses/LICENSE-Lucide.txt -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-circle-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></symbol>
+    <symbol id="i-landmark" viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
+    <symbol id="i-heart-pulse" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+    <symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+    <symbol id="i-graduation-cap" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+    <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+    <symbol id="i-share-2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+    <symbol id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-external-link" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+    <symbol id="i-moon-star" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9"/><path d="M20 3v4"/><path d="M22 5h-4"/></symbol>
+    <symbol id="i-file-search" viewBox="0 0 24 24"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4.268 21a2 2 0 0 0 1.727 1H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="m9 18-1.5-1.5"/><circle cx="5" cy="14" r="3"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <!-- ===================== Cabeçalho ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Fatos.online — Checagem e Verdade Digital, voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon"><use href="#i-shield-check"/></svg>
+          <span class="brand-mark-badge"><svg class="icon"><use href="#i-search"/></svg></span>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Fatos<span>.online</span></span>
+          <span class="brand-tagline">Checagem &amp; Verdade Digital</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#inicio" data-spy-link="inicio">Início</a></li>
+          <li><a class="nav-link" href="#checar" data-spy-link="checar">Checar Fato</a></li>
+          <li><a class="nav-link" href="#verificacoes" data-spy-link="verificacoes">Verificações Recentes</a></li>
+          <li><a class="nav-link" href="#sobre" data-spy-link="sobre">Metodologia &amp; Sobre</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="#checar">Checar Agora <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Tema claro" title="Alternar tema claro/escuro">
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+        <a class="btn btn-primary header-cta" href="#checar">Checar Agora <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+        <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-controls="menu-principal" aria-expanded="false" aria-label="Menu">
+          <svg class="icon icon-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon-close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" id="inicio" data-spy="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-badge">
+            <svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>
+            Jornalismo Investigativo &amp; IA com Busca em Tempo Real
+          </p>
+          <h1 class="hero-title" id="hero-title">
+            Combata a desinformação com
+            <span class="highlight">fatos verificados<svg class="squiggle" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M0 6q3.75-6 7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0t7.5 0"/></svg></span>
+          </h1>
+          <p class="hero-lead">
+            Nossa redação combina apuração jornalística rigorosa baseada nos princípios da IFCN e tecnologia Gemini de busca ativa para analisar postagens virais, imagens, áudios e declarações públicas em segundos.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="#checar">
+              Checar um conteúdo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#metodologia">Conheça a metodologia</a>
+          </div>
+          <ul class="hero-trust">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg> Princípios da IFCN</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg> Fontes abertas e citadas</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg> Correções públicas</li>
+          </ul>
+        </div>
+
+        <!-- Central de Monitoramento -->
+        <aside class="monitor" id="monitor" aria-labelledby="monitor-title">
+          <div class="monitor-head">
+            <span class="monitor-icon" aria-hidden="true"><svg class="icon"><use href="#i-shield-check"/></svg></span>
+            <div class="monitor-heading">
+              <h2 class="monitor-title" id="monitor-title">Central de Monitoramento</h2>
+              <p class="monitor-sub">Varredura e auditoria ativa</p>
+            </div>
+            <span class="live-pill" data-live-pill>
+              <span class="live-dot" aria-hidden="true"></span>
+              <span data-live-label>Ao Vivo</span>
+            </span>
+          </div>
+
+          <div class="monitor-stats">
+            <div class="stat stat-checks">
+              <p class="stat-label"><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg> Verificações</p>
+              <p class="stat-value" data-counter="verificacoes" data-target="14834">14.834</p>
+              <p class="stat-caption">Conteúdos auditados</p>
+            </div>
+            <div class="stat stat-false">
+              <p class="stat-label"><svg class="icon" aria-hidden="true"><use href="#i-circle-x"/></svg> Falsidades</p>
+              <p class="stat-value" data-counter="falsidades" data-target="9419">9.419</p>
+              <p class="stat-caption">Boatos desmentidos</p>
+            </div>
+          </div>
+
+          <div class="monitor-rate">
+            <div class="rate-head">
+              <span>Taxa de desmentidos</span>
+              <strong data-rate>63,5%</strong>
+            </div>
+            <div class="rate-track" aria-hidden="true">
+              <span class="rate-fill" data-rate-fill></span>
+            </div>
+          </div>
+
+          <div class="monitor-activity">
+            <div class="activity-head">
+              <span><svg class="icon" aria-hidden="true"><use href="#i-activity"/></svg> Atividade de varredura</span>
+              <span class="activity-time" data-updated>atualizado agora</span>
+            </div>
+            <svg class="sparkline" viewBox="0 0 300 64" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#38bdf8" stop-opacity=".35"/>
+                  <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="spark-area" data-spark-area d="M0 64 L300 64 Z"/>
+              <path class="spark-line" data-spark-line d="M0 40 L300 40"/>
+            </svg>
+            <ul class="channel-list">
+              <li>WhatsApp</li>
+              <li>Instagram</li>
+              <li>TikTok</li>
+              <li>YouTube</li>
+              <li>X</li>
+            </ul>
+          </div>
+
+          <div class="monitor-foot">
+            <button class="monitor-toggle" type="button" data-monitor-toggle data-paused="false">
+              <svg class="icon icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
+              <svg class="icon icon-play" aria-hidden="true"><use href="#i-play"/></svg>
+              <span data-monitor-toggle-label>Pausar</span>
+            </button>
+            <p class="monitor-note"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg> Painel demonstrativo · números simulados</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== Checar Fato ===================== -->
+    <section class="section section-checker" id="checar" data-spy="checar" aria-labelledby="checar-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-file-search"/></svg> Checar Fato</p>
+          <h2 class="section-title" id="checar-title">Recebeu algo suspeito? <span class="text-gradient">Cheque antes de compartilhar.</span></h2>
+          <p class="section-lead">
+            Cole o texto, a manchete ou o link que chegou até você. A análise roda no seu navegador, aponta sinais de alerta típicos de boatos e prepara buscas nas principais bases de checagem.
+          </p>
+        </header>
+
+        <div class="checker glass" data-reveal>
+          <form class="checker-form" id="checker-form" novalidate>
+            <label class="field-label" for="claim-input">Conteúdo a verificar</label>
+            <textarea class="field" id="claim-input" name="claim" rows="5" maxlength="2000" required aria-describedby="claim-hint claim-error"
+              placeholder="Ex.: URGENTE!!! Médicos confirmam que... Compartilhe antes que apaguem!"></textarea>
+            <p class="field-error" id="claim-error" role="alert" hidden>Cole um texto ou link para analisar.</p>
+            <div class="checker-row">
+              <p class="hint" id="claim-hint">
+                <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+                Nada é enviado a servidores. A análise identifica padrões comuns em boatos e não substitui a checagem profissional.
+              </p>
+              <div class="checker-actions">
+                <button class="btn btn-ghost btn-sm" type="button" data-checker-example>Usar exemplo</button>
+                <button class="btn btn-primary" type="submit">
+                  Analisar sinais <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="checker-result" id="checker-result" aria-live="polite" hidden>
+            <div class="result-head">
+              <div class="meter" data-meter>
+                <span class="meter-fill" data-meter-fill></span>
+              </div>
+              <div class="result-summary">
+                <p class="result-level">Nível de atenção: <strong data-result-level>—</strong></p>
+                <p class="result-text" data-result-text></p>
+              </div>
+            </div>
+            <ul class="signal-list" data-signal-list></ul>
+            <div class="search-links">
+              <p class="search-links-title">Procure checagens já publicadas sobre o tema:</p>
+              <div class="search-links-grid" data-search-links></div>
+              <p class="search-links-tip">
+                Recebeu uma imagem ou vídeo? Faça uma busca reversa no
+                <a href="https://lens.google.com/" target="_blank" rel="noopener noreferrer">Google Lens</a> ou no
+                <a href="https://tineye.com/" target="_blank" rel="noopener noreferrer">TinEye</a> para descobrir onde ele apareceu primeiro.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Seção 1 ===================== -->
+    <section class="section" id="sobre" data-spy="sobre" aria-labelledby="sobre-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow-num">01</span> O ecossistema</p>
+          <h2 class="section-title" id="sobre-title">O Ecossistema da Desinformação e o Papel do Repositório</h2>
+          <p class="section-lead">
+            A desinformação não é um acidente isolado: é um ecossistema com produtores, incentivos econômicos, plataformas e públicos. Entender como ele funciona é o primeiro passo para enfrentá-lo.
+          </p>
+        </header>
+
+        <div class="split">
+          <div class="prose" data-reveal>
+            <h3>Uma crise de confiança informacional</h3>
+            <p>
+              <a class="cite" href="#ref-wardle-2017">Wardle e Derakhshan (2017)</a>, em relatório para o Conselho da Europa, propõem o conceito de <strong>desordem informacional</strong> para descrever um fenômeno que vai muito além das “notícias falsas”: ele envolve agentes que criam, produzem e distribuem mensagens e intérpretes que as recebem, ressignificam e compartilham.
+            </p>
+            <h3>Algoritmos de engajamento</h3>
+            <p>
+              As plataformas recomendam o que prende a atenção — cliques, comentários, compartilhamentos e tempo de tela. Conteúdos que despertam indignação, medo ou senso de pertencimento circulam mais, e a desinformação explora exatamente esses gatilhos. <a class="cite" href="#ref-allcott-2017">Allcott e Gentzkow (2017)</a> catalogaram, na eleição presidencial dos EUA de 2016, notícias falsas favoráveis a Trump compartilhadas cerca de <strong>30 milhões</strong> de vezes no Facebook, contra <strong>7,6 milhões</strong> das favoráveis a Clinton.
+            </p>
+            <h3>O papel da inteligência artificial</h3>
+            <p>
+              A IA atua dos dois lados da disputa. Modelos generativos barateiam a produção de textos, imagens, áudios e vídeos sintéticos em escala; ao mesmo tempo, processamento de linguagem natural, busca em tempo real e análise de padrões ajudam checadores a localizar boatos, rastrear sua origem e priorizar o que precisa ser verificado — sempre com revisão humana.
+            </p>
+            <h3>Por que um repositório</h3>
+            <p>
+              O Fatos.online nasce como um <strong>repositório aberto</strong>: cada verificação documenta a alegação, as fontes consultadas, o raciocínio e o veredito, com histórico versionado e público no
+              <a href="https://github.com/briandevbr/fatos.online" target="_blank" rel="noopener noreferrer">GitHub</a>. O conhecimento deixa de ficar disperso em correntes e capturas de tela e passa a ser rastreável.
+            </p>
+          </div>
+
+          <aside class="typology glass" aria-labelledby="typology-title" data-reveal>
+            <p class="typology-kicker">Wardle &amp; Derakhshan, 2017</p>
+            <h3 class="typology-title" id="typology-title">Os três tipos de desordem informacional</h3>
+            <ul class="typology-list">
+              <li class="typology-item type-mis">
+                <span class="typology-tag">Informação incorreta</span>
+                <strong>Mis-information</strong>
+                <p>Conteúdo falso compartilhado <strong>sem</strong> intenção de causar dano — como o parente que repassa um boato acreditando ajudar.</p>
+              </li>
+              <li class="typology-item type-dis">
+                <span class="typology-tag">Desinformação</span>
+                <strong>Dis-information</strong>
+                <p>Conteúdo falso criado ou difundido <strong>deliberadamente</strong> para causar dano ou obter vantagem política ou financeira.</p>
+              </li>
+              <li class="typology-item type-mal">
+                <span class="typology-tag">Má-informação</span>
+                <strong>Mal-information</strong>
+                <p>Informação genuína usada para causar dano — como vazamento de dados privados, assédio ou discurso de ódio.</p>
+              </li>
+            </ul>
+          </aside>
+        </div>
+
+        <h3 class="subsection-title" data-reveal>Pilares do repositório</h3>
+        <div class="card-grid cols-3">
+          <article class="card pillar" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-eye"/></svg></span>
+            <h4>Transparência Metodológica</h4>
+            <p>Cada checagem expõe o passo a passo: a alegação original, onde ela circulou, as fontes primárias, os especialistas ouvidos e os critérios do veredito. Nada de “confie em nós” — confira você mesmo.</p>
+          </article>
+          <article class="card pillar" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-refresh-cw"/></svg></span>
+            <h4>Reprodutibilidade</h4>
+            <p>Com fontes linkadas, datas e histórico de versões, qualquer pessoa — jornalista, pesquisador ou estudante — pode refazer o caminho da apuração e chegar à mesma conclusão, ou apontar um erro.</p>
+          </article>
+          <article class="card pillar" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-database"/></svg></span>
+            <h4>Centralização de Conhecimento</h4>
+            <p>Checagens, referências acadêmicas, guias de letramento e dados reunidos em um só lugar, organizados por tema, evitando retrabalho e acelerando a resposta a boatos recorrentes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Seção 2 ===================== -->
+    <section class="section section-alt" id="impacto" data-spy="sobre" aria-labelledby="impacto-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow-num">02</span> Impactos</p>
+          <h2 class="section-title" id="impacto-title">O Impacto Transversal das Fake News na Sociedade</h2>
+          <p class="section-lead">
+            Os efeitos da desinformação atravessam a política, a saúde, a ciência e a vida privada — e se retroalimentam.
+          </p>
+        </header>
+
+        <div class="impact-list">
+          <article class="impact" data-reveal>
+            <div class="impact-index" aria-hidden="true">
+              <span>1</span>
+              <svg class="icon"><use href="#i-landmark"/></svg>
+            </div>
+            <div class="impact-body">
+              <h3>Erosão Democrática e Polarização</h3>
+              <p>
+                Boatos políticos corroem a confiança nas instituições e no próprio processo eleitoral. <a class="cite" href="#ref-gomes-2019">Gomes e Dourado (2019)</a> analisaram 14 histórias comprovadamente falsas sobre supostas fraudes nas urnas eletrônicas que circularam na campanha presidencial brasileira de 2018 e descrevem as fake news como relatos que fingem ser factuais, inventando ou alterando fatos para fins políticos.
+              </p>
+              <p>
+                Nesse ambiente prevalece uma <strong>epistemologia tribal</strong>: uma informação é aceita ou rejeitada conforme o grupo de onde vem, não conforme as evidências. A polarização deixa de ser divergência de opiniões e passa a ser divergência sobre os próprios fatos.
+              </p>
+            </div>
+            <div class="impact-stat">
+              <strong>14</strong>
+              <span>boatos sobre fraude nas urnas analisados na eleição de 2018</span>
+            </div>
+          </article>
+
+          <article class="impact" data-reveal>
+            <div class="impact-index" aria-hidden="true">
+              <span>2</span>
+              <svg class="icon"><use href="#i-heart-pulse"/></svg>
+            </div>
+            <div class="impact-body">
+              <h3>Ameaça à Saúde Pública e à Ciência</h3>
+              <p>
+                Na saúde, a desinformação afasta pessoas de cuidados comprovados: boatos sobre vacinas, curas milagrosas e tratamentos sem eficácia ganham velocidade em crises. <a class="cite" href="#ref-barboza-2021">Barboza e Servidoni (2021)</a> mostram como a pandemia de covid-19 escancarou a rapidez com que conteúdos falsos, movidos por interesses financeiros ou políticos, se espalham por sites e redes como Facebook, Twitter e WhatsApp. Na ciência, o efeito é a erosão da confiança em pesquisadores e instituições.
+              </p>
+              <p>
+                O problema é agravado pela dificuldade de reconhecer o falso. No <strong>Truth Quest</strong>, pesquisa da OCDE com cerca de 40 mil participantes em 21 países, o Brasil ficou em último lugar: os brasileiros acertaram 54% das vezes ao distinguir conteúdos verdadeiros de falsos, contra média geral de 60% — a Finlândia liderou, com 66% (<a class="cite" href="#ref-lesher-2024">Lesher; Pawelec; Fogarassy, 2024</a>). Em <a class="cite" href="#ref-radio-usp-2024">reportagem da Rádio USP</a>, o resultado foi relacionado à evasão escolar e à desigualdade social, com defesa da educação midiática.
+              </p>
+              <p>
+                E não se trata só de falta de informação. A tese de Cristiane Sinimbu Sanchez (<a class="cite" href="#ref-sanchez-2025">2025</a>), divulgada pela <a class="cite" href="#ref-ciencia-ufpr-2025">Ciência UFPR</a>, indica que muita gente compartilha fake news de forma consciente — às vezes estratégica — para <strong>afirmar crenças morais e sinalizar a qual grupo pertence</strong>. A notícia falsa vira marcador de identidade, o que explica por que a correção factual, sozinha, raramente basta.
+              </p>
+            </div>
+            <div class="impact-stat impact-stat-grid">
+              <div><strong>54%</strong><span>acerto dos brasileiros no Truth Quest (último lugar)</span></div>
+              <div><strong>60%</strong><span>média dos 21 países avaliados pela OCDE</span></div>
+              <div><strong>72%</strong><span>dos usuários de redes viram notícias que consideraram falsas em seis meses (DataSenado, 2024)</span></div>
+            </div>
+          </article>
+
+          <article class="impact" data-reveal>
+            <div class="impact-index" aria-hidden="true">
+              <span>3</span>
+              <svg class="icon"><use href="#i-triangle-alert"/></svg>
+            </div>
+            <div class="impact-body">
+              <h3>Danos Individuais e Violência Coletiva</h3>
+              <p>
+                A desinformação fere pessoas concretas: reputações destruídas em horas, golpes financeiros disfarçados de notícia e boatos que alimentam perseguições. Em 2014, no Guarujá (SP), Fabiane Maria de Jesus foi linchada após ser confundida com a suposta sequestradora de crianças descrita em um boato nas redes sociais.
+              </p>
+              <p>
+                <a class="cite" href="#ref-costa-2025">Costa e Cais (2025)</a> descrevem essa dinâmica como uma <strong>espiral da violência</strong>: conteúdos criados para enganar e manipular a opinião pública fomentam intolerância e ódio, enquanto a legislação brasileira, centrada na criminalização, se mostra insuficiente diante da velocidade de propagação.
+              </p>
+              <p>
+                O dano persiste mesmo depois do desmentido. <a class="cite" href="#ref-nyhan-2010">Nyhan e Reifler (2010)</a> mostraram que correções nem sempre reduzem percepções equivocadas e, em alguns grupos, chegam a reforçá-las — o chamado efeito rebote. Por isso, a checagem precisa ser rápida, clara e acompanhada de contexto.
+              </p>
+            </div>
+            <div class="impact-stat">
+              <strong>2014</strong>
+              <span>linchamento no Guarujá (SP) motivado por um boato em rede social</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Seção 3 ===================== -->
+    <section class="section" id="metodologia" data-spy="sobre" aria-labelledby="metodologia-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow-num">03</span> Metodologia</p>
+          <h2 class="section-title" id="metodologia-title">Estratégias Complementares de Enfrentamento</h2>
+          <p class="section-lead">
+            Não existe bala de prata. O enfrentamento eficaz combina tecnologia, método jornalístico e educação — cada frente cobre as limitações das outras.
+          </p>
+        </header>
+
+        <div class="card-grid cols-3 strategies">
+          <article class="card strategy" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-cpu"/></svg></span>
+            <h3>Desenvolvimento Tecnológico &amp; Métricas</h3>
+            <ul class="check-list">
+              <li><strong>PLN</strong> (processamento de linguagem natural) para agrupar alegações semelhantes, reconhecer padrões linguísticos de boatos e priorizar o que está viralizando.</li>
+              <li><strong>Raspagem de dados</strong> de fontes públicas e bibliotecas de anúncios, respeitando a LGPD e os termos de uso das plataformas.</li>
+              <li><strong>Métricas</strong> de alcance, velocidade de propagação e reincidência para medir impacto — e não apenas contar checagens.</li>
+              <li><strong>Revisão humana</strong> obrigatória: a máquina sinaliza, a jornalista ou o jornalista decide.</li>
+            </ul>
+          </article>
+
+          <article class="card strategy" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-scale"/></svg></span>
+            <h3>Checagem Metodológica de Fatos</h3>
+            <p class="card-note">Compromissos do código de princípios da <a href="https://ifcncodeofprinciples.poynter.org/the-commitments" target="_blank" rel="noopener noreferrer">IFCN</a> (International Fact-Checking Network):</p>
+            <ol class="number-list">
+              <li>Apartidarismo e imparcialidade</li>
+              <li>Transparência das fontes</li>
+              <li>Transparência de financiamento e organização</li>
+              <li>Transparência da metodologia</li>
+              <li>Política de correções aberta e honesta</li>
+            </ol>
+          </article>
+
+          <article class="card strategy" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-graduation-cap"/></svg></span>
+            <h3>Letramento Mídia-Digital</h3>
+            <p>
+              <a class="cite" href="#ref-pennycook-2019">Pennycook e Rand (2019)</a> mostram que a suscetibilidade a fake news se explica mais pela falta de raciocínio analítico do que pelo viés partidário: quem para e pensa erra menos, independentemente da ideologia.
+            </p>
+            <ul class="check-list">
+              <li>Pare antes de compartilhar e desconfie de urgência.</li>
+              <li>Procure a fonte original, a data e o autor.</li>
+              <li>Veja se veículos confiáveis noticiaram o mesmo.</li>
+              <li>Crie espaços de diálogo em escolas, bibliotecas e centros comunitários, como propõe a pesquisa da UFPR.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="workflow glass" data-reveal>
+          <h3 class="subsection-title">Como uma checagem é feita</h3>
+          <ol class="steps">
+            <li class="step">
+              <span class="step-num" aria-hidden="true">1</span>
+              <h4>Monitoramento e seleção</h4>
+              <p>Identificamos conteúdos com alto alcance ou potencial de dano, priorizando o interesse público.</p>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">2</span>
+              <h4>Apuração</h4>
+              <p>Buscamos a origem da alegação e consultamos fontes primárias, dados oficiais e especialistas.</p>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">3</span>
+              <h4>Contextualização</h4>
+              <p>Conferimos data, local e circunstância: um fato real fora de contexto também engana.</p>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">4</span>
+              <h4>Classificação</h4>
+              <p>Aplicamos uma escala pública de vereditos, com critérios explícitos para cada etiqueta.</p>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">5</span>
+              <h4>Publicação e correção</h4>
+              <p>Publicamos com as fontes linkadas e corrigimos abertamente qualquer erro apontado.</p>
+            </li>
+          </ol>
+          <h4 class="sr-only">Escala de vereditos</h4>
+          <ul class="verdict-scale">
+            <li class="verdict-chip verdict-true">Verdadeiro</li>
+            <li class="verdict-chip verdict-exaggerated">Exagerado</li>
+            <li class="verdict-chip verdict-misleading">Enganoso</li>
+            <li class="verdict-chip verdict-false">Falso</li>
+            <li class="verdict-chip verdict-unsupported">Sem evidências</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Seção 4 ===================== -->
+    <section class="section section-alt" id="verificacoes" data-spy="verificacoes" aria-labelledby="verificacoes-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow-num">04</span> Verificações recentes</p>
+          <h2 class="section-title" id="verificacoes-title">Casos Práticos de Checagem e Verificação Recentes</h2>
+          <p class="section-lead">
+            Dois mitos informacionais recorrentes, analisados com o mesmo método aplicado a qualquer checagem: alegação, evidências, contexto e veredito.
+          </p>
+        </header>
+
+        <div class="case-list">
+          <!-- Caso 1 -->
+          <article class="case" aria-labelledby="caso-ev-title" data-reveal>
+            <div class="case-main">
+              <div class="case-meta">
+                <span class="case-topic"><svg class="icon" aria-hidden="true"><use href="#i-zap"/></svg> Meio ambiente · Mobilidade</span>
+                <time datetime="2026-10-22">Atualizado em 22 out. 2026</time>
+              </div>
+              <h3 class="case-title" id="caso-ev-title">Carros elétricos poluem mais e pegam fogo com mais facilidade que carros a combustão?</h3>
+              <blockquote class="claim">
+                <svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg>
+                <p>“A bateria do carro elétrico polui mais do que um carro a gasolina a vida inteira — e ainda pega fogo do nada. É uma bomba sobre rodas.”</p>
+                <footer>Alegação típica de correntes e vídeos curtos</footer>
+              </blockquote>
+              <div class="verdict">
+                <span class="verdict-chip verdict-false verdict-lg">Falso</span>
+                <p>As evidências contradizem as duas afirmações: no ciclo de vida completo, elétricos emitem bem menos gases de efeito estufa, e incêndios são proporcionalmente mais raros. Há, porém, nuances reais — como o impacto da mineração e a dificuldade de apagar um fogo em bateria.</p>
+              </div>
+            </div>
+            <div class="case-side">
+              <div class="fact-box fact-yes">
+                <h4><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg> O que procede</h4>
+                <ul>
+                  <li>A fabricação da bateria emite mais CO<sub>2</sub> no início da vida útil do veículo.</li>
+                  <li>A mineração de lítio, níquel e cobalto tem impactos socioambientais relevantes.</li>
+                  <li>Incêndios em baterias exigem técnicas específicas de combate.</li>
+                </ul>
+              </div>
+              <div class="fact-box fact-no">
+                <h4><svg class="icon" aria-hidden="true"><use href="#i-circle-x"/></svg> O que não procede</h4>
+                <ul>
+                  <li>Que o elétrico polua mais ao longo da vida útil.</li>
+                  <li>Que pegue fogo com mais frequência que um carro a combustão.</li>
+                </ul>
+              </div>
+            </div>
+            <details class="case-details">
+              <summary>Ver análise completa e fontes <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+              <div class="case-analysis">
+                <h4>Emissões no ciclo de vida</h4>
+                <p>
+                  A produção da bateria gera mais emissões no início — uma “dívida de carbono” compensada durante o uso, já que o motor elétrico não queima combustível. Considerando todo o ciclo de vida (extração de matérias-primas, fabricação, uso e descarte), o ICCT estimou que elétricos registrados em 2021 na Europa emitem de 66% a 69% menos que carros a gasolina equivalentes, com vantagem também nos EUA, na China e na Índia. No Brasil, cuja matriz elétrica é majoritariamente renovável, estudo do ICCT de 2023 apontou que o elétrico emite cerca de um terço do que emite um carro flex abastecido com a mistura média de gasolina e etanol.
+                </p>
+                <h4>Risco de incêndio</h4>
+                <p>
+                  Dados de 2022 da agência sueca de contingências civis (MSB), repercutidos pela IEEE Spectrum, indicaram incêndios em cerca de 0,004% dos carros elétricos, contra 0,08% dos movidos a gasolina ou diesel — frequência aproximadamente 20 vezes menor. Quando ocorre, porém, o fogo em baterias de íon-lítio é mais difícil de controlar: a fuga térmica pode reacender as chamas horas depois, o que exige protocolos e treinamento específicos dos bombeiros.
+                </p>
+                <h4>Fontes consultadas</h4>
+                <ul class="source-list">
+                  <li><a href="https://theicct.org/publication/a-global-comparison-of-the-life-cycle-greenhouse-gas-emissions-of-combustion-engine-and-electric-passenger-cars/" target="_blank" rel="noopener noreferrer">ICCT (2021) — A global comparison of the life-cycle greenhouse gas emissions of combustion engine and electric passenger cars</a></li>
+                  <li><a href="https://theicct.org/wp-content/uploads/2023/10/Brazil-LDV-LCA-report-A4-v7.pdf" target="_blank" rel="noopener noreferrer">ICCT (2023) — Avaliação do ciclo de vida de carros de passeio no Brasil (PDF)</a></li>
+                  <li><a href="https://spectrum.ieee.org/lithium-ion-battery-fires" target="_blank" rel="noopener noreferrer">IEEE Spectrum — Extinguishing the EV Battery Fire Hype</a></li>
+                </ul>
+              </div>
+            </details>
+          </article>
+
+          <!-- Caso 2 -->
+          <article class="case" aria-labelledby="caso-sono-title" data-reveal>
+            <div class="case-main">
+              <div class="case-meta">
+                <span class="case-topic"><svg class="icon" aria-hidden="true"><use href="#i-moon-star"/></svg> Saúde · Neurociência</span>
+                <time datetime="2026-10-22">Atualizado em 22 out. 2026</time>
+              </div>
+              <h3 class="case-title" id="caso-sono-title">Insônia causa Alzheimer — e áudios de “ondas cerebrais” curam os dois?</h3>
+              <blockquote class="claim">
+                <svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg>
+                <p>“Cientistas comprovaram: quem dorme mal vai ter Alzheimer. A solução é ouvir ondas cerebrais de 40 Hz toda noite — limpa o cérebro e cura a insônia em uma semana.”</p>
+                <footer>Alegação típica de vídeos e correntes de bem-estar</footer>
+              </blockquote>
+              <div class="verdict">
+                <span class="verdict-chip verdict-misleading verdict-lg">Enganoso</span>
+                <p>A alegação distorce pesquisas reais. O sono profundo, marcado por ondas cerebrais lentas, participa da limpeza de resíduos do cérebro, e dormir mal está associado a marcadores do Alzheimer. Mas associação não é causa — e não há comprovação de que áudios curem insônia ou previnam a doença.</p>
+              </div>
+            </div>
+            <div class="case-side">
+              <div class="fact-box fact-yes">
+                <h4><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg> O que procede</h4>
+                <ul>
+                  <li>Sono de qualidade é importante para a saúde do cérebro.</li>
+                  <li>Privação de sono está associada a aumento de beta-amiloide.</li>
+                  <li>Estimulação a 40 Hz é uma linha de pesquisa real.</li>
+                </ul>
+              </div>
+              <div class="fact-box fact-no">
+                <h4><svg class="icon" aria-hidden="true"><use href="#i-circle-x"/></svg> O que não procede</h4>
+                <ul>
+                  <li>Que a insônia, sozinha, cause Alzheimer.</li>
+                  <li>Que áudios de “ondas cerebrais” curem insônia ou previnam a doença.</li>
+                  <li>Que já existam resultados definitivos em humanos.</li>
+                </ul>
+              </div>
+            </div>
+            <details class="case-details">
+              <summary>Ver análise completa e fontes <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></summary>
+              <div class="case-analysis">
+                <h4>Sono profundo e “faxina” cerebral</h4>
+                <p>
+                  Durante o sono de ondas lentas, o cérebro intensifica a remoção de resíduos metabólicos. Em camundongos, Xie et al. (2013) observaram que o sono amplia em cerca de 60% o espaço entre as células, acelerando a limpeza feita pelo chamado sistema glinfático — mecanismo que ainda é debatido na literatura científica.
+                </p>
+                <h4>O que os estudos em humanos mostram</h4>
+                <p>
+                  Em estudo do NIH com 20 voluntários (Shokri-Kojori et al., 2018), uma noite sem dormir elevou em cerca de 5% a beta-amiloide — proteína associada ao Alzheimer — em regiões como o hipocampo e o tálamo. Os autores ressaltam que a amostra é pequena e que a relação entre sono e Alzheimer é bidirecional: as alterações da doença também prejudicam o sono.
+                </p>
+                <h4>As “ondas de 40 Hz”</h4>
+                <p>
+                  Pesquisadores do MIT (Iaccarino et al., 2016) mostraram que estímulos luminosos piscando a 40 Hz reduziram placas amiloides em camundongos. Estudos em pessoas ainda são iniciais e usam protocolos controlados de luz e som — não faixas de áudio genéricas da internet. Insônia persistente merece avaliação médica; a terapia cognitivo-comportamental para insônia (TCC-I) é o tratamento de primeira linha.
+                </p>
+                <h4>Fontes consultadas</h4>
+                <ul class="source-list">
+                  <li><a href="https://doi.org/10.1126/science.1241224" target="_blank" rel="noopener noreferrer">Xie et al. (2013) — Sleep drives metabolite clearance from the adult brain. <em>Science</em></a></li>
+                  <li><a href="https://doi.org/10.1073/pnas.1721694115" target="_blank" rel="noopener noreferrer">Shokri-Kojori et al. (2018) — β-Amyloid accumulation in the human brain after one night of sleep deprivation. <em>PNAS</em></a></li>
+                  <li><a href="https://www.nih.gov/news-events/lack-sleep-may-be-linked-risk-factor-alzheimers-disease" target="_blank" rel="noopener noreferrer">NIH — Lack of sleep may be linked to risk factor for Alzheimer’s disease</a></li>
+                  <li><a href="https://doi.org/10.1038/nature20587" target="_blank" rel="noopener noreferrer">Iaccarino et al. (2016) — Gamma frequency entrainment attenuates amyloid load and modifies microglia. <em>Nature</em></a></li>
+                </ul>
+              </div>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Seção 5 ===================== -->
+    <section class="section" id="referencias" aria-labelledby="referencias-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow-num">05</span> Referências</p>
+          <h2 class="section-title" id="referencias-title">Referências Bibliográficas Acadêmicas</h2>
+          <p class="section-lead">
+            A base teórica do projeto, em formato ABNT (NBR 6023). Copie qualquer referência com um clique.
+          </p>
+        </header>
+
+        <div class="refs glass" data-reveal>
+          <div class="refs-toolbar">
+            <p><svg class="icon" aria-hidden="true"><use href="#i-book-open"/></svg> <span data-ref-count>11</span> referências em ordem alfabética</p>
+            <button class="btn btn-ghost btn-sm" type="button" data-copy-all-refs>
+              <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> <span>Copiar todas</span>
+            </button>
+          </div>
+          <ol class="ref-list">
+            <li class="ref" id="ref-allcott-2017" data-ref>
+              <p class="ref-text" data-ref-text>ALLCOTT, Hunt; GENTZKOW, Matthew. Social media and fake news in the 2016 election. <strong>Journal of Economic Perspectives</strong>, v. 31, n. 2, p. 211-236, 2017. DOI: <a href="https://doi.org/10.1257/jep.31.2.211" target="_blank" rel="noopener noreferrer">10.1257/jep.31.2.211</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Allcott e Gentzkow (2017)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-barboza-2021" data-ref>
+              <p class="ref-text" data-ref-text>BARBOZA, Endrigo Dellacorte; SERVIDONI, Mônica Cristina. O impacto das fake news na sociedade. <strong>Revista Interface Tecnológica</strong>, Taquaritinga, v. 18, n. 1, p. 169-180, 2021. Disponível em: <a href="https://revista.fatectq.edu.br/interfacetecnologica/article/view/1168" target="_blank" rel="noopener noreferrer">https://revista.fatectq.edu.br/interfacetecnologica/article/view/1168</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Barboza e Servidoni (2021)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-ciencia-ufpr-2025" data-ref>
+              <p class="ref-text" data-ref-text>CIÊNCIA UFPR. Fake news afirmam crenças e criam senso identitário, diz estudo. Curitiba: Universidade Federal do Paraná, 6 out. 2025. Disponível em: <a href="https://ciencia.ufpr.br/portal/divulgacao-de-fake-news-pode-ter-motivacoes-emocionais-e-estrategicas-diz-estudo/" target="_blank" rel="noopener noreferrer">https://ciencia.ufpr.br/portal/divulgacao-de-fake-news-pode-ter-motivacoes-emocionais-e-estrategicas-diz-estudo/</a>. Acesso em: 22 out. 2026.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência da Ciência UFPR (2025)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-costa-2025" data-ref>
+              <p class="ref-text" data-ref-text>COSTA, Alexandre; CAIS, Elizandra Sartin. A espiral da violência: o papel da disseminação das fake news. <strong>Sortuz: Oñati Journal of Emergent Socio-Legal Studies</strong>, v. 15, n. 1, p. 42-55, 2025. DOI: <a href="https://doi.org/10.35295/sz.iisl/2247" target="_blank" rel="noopener noreferrer">10.35295/sz.iisl/2247</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Costa e Cais (2025)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-gomes-2019" data-ref>
+              <p class="ref-text" data-ref-text>GOMES, Wilson; DOURADO, Tatiana. Fake news, um fenômeno de comunicação política entre jornalismo, política e democracia. <strong>Estudos em Jornalismo e Mídia</strong>, Florianópolis, v. 16, n. 2, jul./dez. 2019. DOI: <a href="https://doi.org/10.5007/1984-6924.2019v16n2p33" target="_blank" rel="noopener noreferrer">10.5007/1984-6924.2019v16n2p33</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Gomes e Dourado (2019)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-lesher-2024" data-ref>
+              <p class="ref-text" data-ref-text>LESHER, Molly; PAWELEC, Hanna; FOGARASSY, Mercedes. <strong>The OECD Truth Quest Survey</strong>: methodology and findings. Paris: OECD Publishing, 2024. (OECD Digital Economy Papers, n. 369). DOI: <a href="https://doi.org/10.1787/92a94c0f-en" target="_blank" rel="noopener noreferrer">10.1787/92a94c0f-en</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência do Truth Quest da OCDE (2024)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-nyhan-2010" data-ref>
+              <p class="ref-text" data-ref-text>NYHAN, Brendan; REIFLER, Jason. When corrections fail: the persistence of political misperceptions. <strong>Political Behavior</strong>, v. 32, n. 2, p. 303-330, 2010. DOI: <a href="https://doi.org/10.1007/s11109-010-9112-2" target="_blank" rel="noopener noreferrer">10.1007/s11109-010-9112-2</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Nyhan e Reifler (2010)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-pennycook-2019" data-ref>
+              <p class="ref-text" data-ref-text>PENNYCOOK, Gordon; RAND, David G. Lazy, not biased: susceptibility to partisan fake news is better explained by lack of reasoning than by motivated reasoning. <strong>Cognition</strong>, v. 188, p. 39-50, 2019. DOI: <a href="https://doi.org/10.1016/j.cognition.2018.06.011" target="_blank" rel="noopener noreferrer">10.1016/j.cognition.2018.06.011</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Pennycook e Rand (2019)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-radio-usp-2024" data-ref>
+              <p class="ref-text" data-ref-text>RÁDIO USP. Relatório da OCDE mostra que brasileiros são os piores em identificar notícias falsas. <strong>Jornal da USP</strong>, São Paulo, 2024. Disponível em: <a href="https://jornal.usp.br/radio-usp/relatorio-da-ocde-mostra-que-brasileiros-sao-os-piores-em-identificar-noticias-falsas/" target="_blank" rel="noopener noreferrer">https://jornal.usp.br/radio-usp/relatorio-da-ocde-mostra-que-brasileiros-sao-os-piores-em-identificar-noticias-falsas/</a>. Acesso em: 22 out. 2026.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência da reportagem da Rádio USP (2024)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-sanchez-2025" data-ref>
+              <p class="ref-text" data-ref-text>SANCHEZ, Cristiane Sinimbu. <strong>O bem versus o mal</strong>: fake news como arma das batalhas morais em disputa nas guerras culturais. 2025. Tese (Doutorado em Comunicação) – Universidade Federal do Paraná, Curitiba, 2025. Disponível em: <a href="https://acervodigital.ufpr.br/handle/1884/97164" target="_blank" rel="noopener noreferrer">https://acervodigital.ufpr.br/handle/1884/97164</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Sanchez (2025)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+            <li class="ref" id="ref-wardle-2017" data-ref>
+              <p class="ref-text" data-ref-text>WARDLE, Claire; DERAKHSHAN, Hossein. <strong>Information disorder</strong>: toward an interdisciplinary framework for research and policy making. Strasbourg: Council of Europe, 2017. (Council of Europe report DGI(2017)09). Disponível em: <a href="https://rm.coe.int/information-disorder-toward-an-interdisciplinary-framework-for-researc/168076277c" target="_blank" rel="noopener noreferrer">https://rm.coe.int/information-disorder-toward-an-interdisciplinary-framework-for-researc/168076277c</a>.</p>
+              <button class="ref-copy" type="button" data-copy-ref aria-label="Copiar referência de Wardle e Derakhshan (2017)"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Seção 6 ===================== -->
+    <section class="section section-alt" id="acesso" aria-labelledby="acesso-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow-num">06</span> Conectividade</p>
+          <h2 class="section-title" id="acesso-title">Conectividade &amp; Acesso Rápido</h2>
+          <p class="section-lead">
+            Leve o Fatos.online no bolso: aponte a câmera do celular para o QR Code. Ele é gerado na hora, no seu navegador, sem serviços externos.
+          </p>
+        </header>
+
+        <div class="qr-layout glass" data-reveal>
+          <figure class="qr-figure">
+            <div class="qr-frame">
+              <div class="qr-code" data-qr-output>
+                <noscript><p class="qr-fallback">Ative o JavaScript para gerar o QR Code.</p></noscript>
+              </div>
+            </div>
+            <figcaption>
+              <span class="qr-url" data-qr-caption>—</span>
+              <span class="qr-meta" data-qr-meta></span>
+            </figcaption>
+          </figure>
+
+          <div class="qr-controls">
+            <h3 class="qr-controls-title"><svg class="icon" aria-hidden="true"><use href="#i-smartphone"/></svg> Para onde o QR Code deve levar?</h3>
+            <fieldset class="segmented">
+              <legend class="sr-only">Destino do QR Code</legend>
+              <label><input type="radio" name="qr-target" value="" data-qr-target checked><span>Página inicial</span></label>
+              <label><input type="radio" name="qr-target" value="#checar" data-qr-target><span>Checar Fato</span></label>
+              <label><input type="radio" name="qr-target" value="#verificacoes" data-qr-target><span>Verificações</span></label>
+              <label><input type="radio" name="qr-target" value="#referencias" data-qr-target><span>Referências</span></label>
+            </fieldset>
+
+            <label class="field-label" for="qr-input">Endereço codificado</label>
+            <div class="input-group">
+              <svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>
+              <input class="field" id="qr-input" type="url" inputmode="url" autocomplete="off" spellcheck="false" maxlength="600" aria-describedby="qr-help qr-error">
+            </div>
+            <p class="hint" id="qr-help">Você também pode colar qualquer endereço — por exemplo, o link público da aplicação de checagem.</p>
+            <p class="field-error" id="qr-error" role="alert" hidden>Informe um endereço que comece com http:// ou https://.</p>
+
+            <div class="qr-actions">
+              <button class="btn btn-primary" type="button" data-qr-download>
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PNG
+              </button>
+              <button class="btn btn-ghost" type="button" data-qr-copy>
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> <span>Copiar link</span>
+              </button>
+              <button class="btn btn-ghost" type="button" data-qr-share hidden>
+                <svg class="icon" aria-hidden="true"><use href="#i-share-2"/></svg> Compartilhar
+              </button>
+            </div>
+
+            <ul class="qr-tips">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Funciona com a câmera nativa do Android e do iPhone.</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Gerador próprio (ISO/IEC 18004), sem bibliotecas de terceiros.</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Correção de erros automática: o código continua legível mesmo se parcialmente coberto.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Rodapé ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio" aria-label="Fatos.online — voltar ao início">
+          <span class="brand-mark" aria-hidden="true">
+            <svg class="icon"><use href="#i-shield-check"/></svg>
+            <span class="brand-mark-badge"><svg class="icon"><use href="#i-search"/></svg></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">Fatos<span>.online</span></span>
+            <span class="brand-tagline">Checagem &amp; Verdade Digital</span>
+          </span>
+        </a>
+        <p>Combatendo a desinformação com apuração transparente, ciência aberta e letramento midiático.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Seções da página">
+        <h2>Navegação</h2>
+        <ul>
+          <li><a href="#checar">Checar Fato</a></li>
+          <li><a href="#sobre">O ecossistema</a></li>
+          <li><a href="#impacto">Impactos</a></li>
+          <li><a href="#metodologia">Metodologia</a></li>
+          <li><a href="#verificacoes">Verificações recentes</a></li>
+          <li><a href="#referencias">Referências</a></li>
+          <li><a href="#acesso">Acesso rápido</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Agências de checagem">
+        <h2>Onde mais checar</h2>
+        <ul>
+          <li><a href="https://lupa.uol.com.br/" target="_blank" rel="noopener noreferrer">Agência Lupa</a></li>
+          <li><a href="https://www.aosfatos.org/" target="_blank" rel="noopener noreferrer">Aos Fatos</a></li>
+          <li><a href="https://projetocomprova.com.br/" target="_blank" rel="noopener noreferrer">Projeto Comprova</a></li>
+          <li><a href="https://g1.globo.com/fato-ou-fake/" target="_blank" rel="noopener noreferrer">Fato ou Fake (g1)</a></li>
+          <li><a href="https://www.estadao.com.br/estadao-verifica/" target="_blank" rel="noopener noreferrer">Estadão Verifica</a></li>
+          <li><a href="https://checamos.afp.com/" target="_blank" rel="noopener noreferrer">AFP Checamos</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h2>Projeto</h2>
+        <ul>
+          <li><a href="https://github.com/briandevbr/fatos.online" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repositório no GitHub</a></li>
+          <li><a href="https://github.com/briandevbr" target="_blank" rel="noopener noreferrer">Autor: David Brian</a></li>
+          <li><a href="humans.txt">humans.txt (créditos)</a></li>
+          <li><a href="https://ifcncodeofprinciples.poynter.org/the-commitments" target="_blank" rel="noopener noreferrer">Código de princípios da IFCN</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span data-year>2026</span> Fatos.online · Desenvolvido por <a href="https://github.com/briandevbr" target="_blank" rel="noopener noreferrer">David Brian</a> · HTML, CSS e JavaScript nativos.</p>
+      <a class="back-to-top" href="#inicio"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg> Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <p class="sr-only" aria-live="polite" data-sr-status></p>
+</body>
+</html>

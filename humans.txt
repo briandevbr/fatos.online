@@ -1,0 +1,19 @@
+/* EQUIPE */
+  Autor e idealizador: David Brian
+  GitHub: https://github.com/briandevbr
+  Local: Pernambuco, Brasil
+
+/* COLABORAÇÃO */
+  Colaboração técnica (desenvolvimento assistido por IA): Claude Code — Anthropic
+  Site: https://claude.com/claude-code
+
+/* SITE */
+  Projeto: Fatos.online — Checagem & Verdade Digital
+  Repositório: https://github.com/briandevbr/fatos.online
+  Última atualização: 2026/10/22
+  Idioma: Português (Brasil)
+  Padrões: HTML5, CSS3, JavaScript (ES2020), sem frameworks nem build
+  QR Code: gerador próprio (ISO/IEC 18004), sem dependências
+  Tipografia: Merriweather e Plus Jakarta Sans (SIL Open Font License 1.1)
+  Ícones: Lucide (ISC License)
+  Licenças de terceiros: assets/licenses/
