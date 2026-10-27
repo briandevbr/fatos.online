@@ -92,8 +92,11 @@
 
     const apply = (theme) => {
       root.setAttribute('data-theme', theme);
-      if (meta) meta.setAttribute('content', theme === 'light' ? '#f6f8ff' : '#0f172a');
-      if (button) button.setAttribute('aria-pressed', String(theme === 'light'));
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#ffffff' : '#131313');
+      if (button) {
+        button.setAttribute('aria-pressed', String(theme === 'light'));
+        button.setAttribute('aria-label', theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro');
+      }
     };
 
     apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
@@ -528,7 +531,7 @@
         const count = analysis.signals.length;
         textEl.textContent = count
           ? count + (count === 1 ? ' sinal de alerta encontrado' : ' sinais de alerta encontrados') +
-            '. Antes de compartilhar, procure a mesma informação em fontes confiáveis.'
+          '. Antes de compartilhar, procure a mesma informação em fontes confiáveis.'
           : 'Nenhum sinal clássico de boato foi encontrado — o que não garante que o conteúdo seja verdadeiro. Confira nas bases abaixo.';
         analysis.signals.forEach((signal) => listEl.append(signalItem('i-triangle-alert', 'alert', signal.title, signal.detail)));
         if (analysis.hasSource) listEl.append(signalItem('i-circle-check', 'positive', SOURCE_SIGNAL.title, SOURCE_SIGNAL.detail));
@@ -745,13 +748,20 @@
     selectTarget(targets.find((radio) => radio.checked) || targets[0]);
   }
 
+  function initDateline() {
+    const element = $('[data-dateline]');
+    if (!element) return;
+    const date = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+    element.textContent = date;
+  }
+
   function initYear() {
     $$('[data-year]').forEach((element) => {
       element.textContent = String(new Date().getFullYear());
     });
   }
 
-  [initTheme, initMenu, initHeaderShadow, initScrollSpy, initReveal, initMonitor, initChecker, initReferences, initQr, initYear].forEach(
+  [initTheme, initMenu, initHeaderShadow, initScrollSpy, initReveal, initMonitor, initChecker, initReferences, initQr, initDateline, initYear].forEach(
     (init) => {
       try {
         init();
